@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ChartSource } from 'src/app/interfaces/chart-source';
+import { Component, OnInit, Input } from '@angular/core';
+ import { ChartSource } from 'src/app/interfaces/chart-source';
 
 @Component({
   selector: 'app-column2d',
@@ -7,10 +7,10 @@ import { ChartSource } from 'src/app/interfaces/chart-source';
   styleUrls: ['./column2d.component.scss']
 })
 export class Column2dComponent implements OnInit {
-
+  @Input() chartSource: ChartSource;
   dataSource: Object;
   chartConfig: Object;
-  chartSource: ChartSource;
+  
 
   constructor() {
      this.chartConfig = {
@@ -19,6 +19,7 @@ export class Column2dComponent implements OnInit {
       type: 'column2d',
       dataFormat: 'json',
     };
+    console.log(this.chartSource)
 
   // this.chartSource.chart.caption = "Countries With Most Oil Reserves [2017-18]";
   // this.chartSource.chart.subCaption = "In MMbbl = One Million barrels";
@@ -35,12 +36,12 @@ export class Column2dComponent implements OnInit {
 
   this.dataSource = {
       "chart": {
-        "caption": "Countries With Most Oil Reserves [2017-18]",
-        "subCaption": "In MMbbl = One Million barrels",
-        "xAxisName": "Country",
-        "yAxisName": "Reserves (MMbbl)",
-        "numberSuffix": "K",
-        "theme": "fusion",
+        "caption": this.chartSource ? this.chartSource.chart.caption : "" ,
+        "subCaption": this.chartSource ? this.chartSource.chart.subCaption : "",
+        "xAxisName": this.chartSource ? this.chartSource.chart.xAxisName : "",
+        "yAxisName": this.chartSource ? this.chartSource.chart.yAxisName : "",
+        "numberSuffix": this.chartSource ? this.chartSource.chart.numberSuffix : "",
+        "theme": this.chartSource ? this.chartSource.chart : "fusion",
       },
       "data": [{
         "label": "Venezuela",
