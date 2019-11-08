@@ -1,0 +1,15 @@
+
+    <mat-form-field class="mr-2" >
+        <input matInput [matDatepicker]="begin" placeholder="Choose a date" [formControl]="initialDate">
+        <mat-datepicker-toggle matSuffix [for]="begin"></mat-datepicker-toggle>
+        <mat-datepicker #begin></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="mr-2">
+        <input matInput [matDatepicker]="end" placeholder="Choose a date" [formControl]="lastDate">
+        <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+        <mat-datepicker #end></mat-datepicker>
+    </mat-form-field>
+
+<button type="button" class="btn btn-primary" (click)="onSubmit()">submit</button>
+
+<app-column2d></app-column2d>
