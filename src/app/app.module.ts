@@ -25,6 +25,7 @@ import * as Charts from "fusioncharts/fusioncharts.charts";
 import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import { Column2dComponent } from './components/data-visualization/column2d/column2d.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardNavComponent } from './components/data-visualization/dashboard-nav/dashboard-nav.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -33,7 +34,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
   declarations: [
     AppComponent,
     DataVisualizationComponent,
-    Column2dComponent
+    Column2dComponent,
+    DashboardNavComponent
   ],
   imports: [
     BrowserModule,

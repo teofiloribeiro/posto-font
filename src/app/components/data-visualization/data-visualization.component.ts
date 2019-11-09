@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ChartData } from 'src/app/interfaces/chart-data';
 import { ChartDataService } from 'src/app/services/chart-data.service';
 import { ChartSource } from 'src/app/interfaces/chart-source';
+import { ChartSetup } from 'src/app/interfaces/chart-setup';
 
 
 @Component({
@@ -14,39 +15,42 @@ import { ChartSource } from 'src/app/interfaces/chart-source';
 export class DataVisualizationComponent implements OnInit {
   initialDate = new FormControl();
   lastDate = new FormControl();
-  chartSource: ChartSource;
+  chartSetup: ChartSetup;
+
+  render:boolean;
 
   topVeiclesData$: Observable <ChartData[]>
 
   chartData: ChartData[];
 
   constructor(private dataService: ChartDataService) {
-   }
+    this.render = false;
+  }
+    
 
-  ngOnInit() { }
+  ngOnInit() {
+    // this.dataService.getTopVeicles().subscribe(
+    //   data => this.chartData = data
+    // )
+    this.topVeiclesData$ = this.dataService.getTopVeicles();
+    console.log("dataVisualiation: "+ this.topVeiclesData$);
+   }
 
   onSubmit(){
     console.log(this.initialDate.value + " " + this.lastDate.value);
     const date1 = new Date (this.initialDate.value);
     const date2 = new Date (this.lastDate.value);
     
-    console.log(date1 +"  "+ date2)
+    console.log(date1.toISOString() +"  "+ date2)
 
-    this.dataService.getTopVeicles().subscribe(
-      data => this.chartData = data
-    );
   }
 
 
   private buildTopVeicles(){
-    //this.topVeiclesData$ = this.dataService.getTopVeicles();
-    // this.chartSource.chart.caption = "Consumo por tipo de veiculo";
-    // this.chartSource.chart.numberSuffix = "K";
-    // this.chartSource.chart.xAxisName = "Tipos de Veiculo";
-    // this.chartSource.chart.yAxisName = "Quantitivo";
-    this.chartSource.data = this.chartData;
-
-    console.log(this.chartData)
+    
+    //this.chartSetup.caption = "Consumo Por Tipo de Veiculo";
+    console.log(this.dataService.getData())
+    //this.render =true;
 
   }
 

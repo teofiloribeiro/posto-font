@@ -1,13 +1,7 @@
 import { ChartData } from './chart-data';
+import { ChartSetup } from './chart-setup';
 
 export interface ChartSource {
-    chart: {
-        caption: string,
-        subCaption: string,
-        xAxisName: string,
-        yAxisName: string,
-        numberSuffix: string,
-        theme: string,
-      },
-    data: ChartData[]
+    chart: ChartSetup;
+    data: ChartData[];
 }

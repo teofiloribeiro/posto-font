@@ -20,7 +20,7 @@ export class ChartDataService {
   constructor(private http: HttpClient) { }
 
   getTopVeicles(){
-    return this.http.get<ChartData>(`${this.API}${this.topVeicles}`)
+    return this.http.get<ChartData[]>(`${this.API}${this.topVeicles}`)
     .pipe(
       tap(
         console.log
@@ -28,5 +28,32 @@ export class ChartDataService {
     )
   }
 
+  getData(){
+    return [{
+      "label": "Venezuela",
+      "value": "290"
+    }, {
+      "label": "Saudi",
+      "value": "260"
+    }, {
+      "label": "Canada",
+      "value": "180"
+    }, {
+      "label": "Iran",
+      "value": "140"
+    }, {
+      "label": "Russia",
+      "value": "115"
+    }, {
+      "label": "UAE",
+      "value": "100"
+    }, {
+      "label": "US",
+      "value": "30"
+    }, {
+      "label": "China",
+      "value": "30"
+    }]
+  }
 
 }
