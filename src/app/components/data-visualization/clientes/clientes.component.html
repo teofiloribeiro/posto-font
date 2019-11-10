@@ -1,0 +1,77 @@
+<div class="row">
+
+    <div id="clientsByCountry" class="col-6">
+        <div class="field-border">
+            <div class="filter"></div>
+            <div *ngIf="clientesByCountry$ | async as clientesByCountry; else loading">
+                <p>{{topVeiclesData}}</p>
+                <app-column2d [chartData]="clientesByCountry" [chartSetup]= "clientesByCountryChart"></app-column2d>
+            </div>
+        </div>
+    </div>
+    <div id="clientsByState" class="col-6">
+        <div class="field-border">
+            <div class="filter">
+                <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <mat-select [(value)]="clientesByState">
+                        <mat-option *ngFor="let state of states" [value]="state.value">
+                            {{state.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button type="button" class="btn btn-light" (click)="onSubmitByState()">OK</button>
+            </div>
+            <div *ngIf="clientesByState$ | async as clientesByState; else loading">
+                <p>{{topVeiclesData}}</p>
+                <app-column2d [chartData]="clientesByState" [chartSetup]= "clientesByStateChart"></app-column2d>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div id="clientsByNeighbor" class="col-6">
+        <div class="field-border">
+            <div>
+                <mat-form-field class="ml-3">
+                    <mat-label>Estado</mat-label>
+                    <mat-select [(value)]="clientesByCityState">
+                        <mat-option *ngFor="let state of states" [value]="state.value">
+                            {{state.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="ml-3">
+                    <mat-label>Cidade</mat-label>
+                    <mat-select [(value)]="clientsByCityCity">
+                        <mat-option *ngFor="let city of cities" [value]="city.value">
+                            {{city.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button type="button" class="btn btn-light" (click)="onSubmitByCity()">OK</button>
+            </div>
+            <div *ngIf="clientesByCity$ | async as clientesByCity; else loading">
+                <p>{{topVeiclesData}}</p>
+                <app-column2d [chartData]="clientesByCity" [chartSetup]= "clientesByCityChart"></app-column2d>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="veiclesTypes" class="col-6">
+        <div class="field-border">
+            <div class="filter"></div>
+            <div *ngIf="veiclesTypes$ | async as veiclesTypes; else loading">
+                <p>{{topVeiclesData}}</p>
+                <app-column2d [chartData]="veiclesTypes" [chartSetup]= "veiclesTypes"></app-column2d>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <span>LOADING...</span>
+</ng-template>

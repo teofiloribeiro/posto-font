@@ -20,51 +20,26 @@ export class Column2dComponent implements OnInit {
   constructor() {
     
     this.chartConfig = {
-      width: '700',
-      height: '400',
-      type: 'column2d',
+      width: '800',
+      height: '500',
+      type: 'column3d',
       dataFormat: 'json',
     };
   
-  // this.chartData = [{
-  //   "label": "Venezuela",
-  //   "value": "290"
-  // }, {
-  //   "label": "Saudi",
-  //   "value": "260"
-  // }, {
-  //   "label": "Canada",
-  //   "value": "180"
-  // }, {
-  //   "label": "Iran",
-  //   "value": "140"
-  // }, {
-  //   "label": "Russia",
-  //   "value": "115"
-  // }, {
-  //   "label": "UAE",
-  //   "value": "100"
-  // }, {
-  //   "label": "US",
-  //   "value": "30"
-  // }, {
-  //   "label": "China",
-  //   "value": "30"
-  // }]
-  
+
   
 
    }
 
   ngOnInit() {
-    this.chartSetup = {
-      "caption":  "Countries With Most Oil Reserves [2017-18]" ,
-      "subCaption":  "",
-      "xAxisName": "",
-      "yAxisName":  "",
-      "numberSuffix": "",
-      "theme": "fusion",
-    },
+    // this.chartSetup = {
+    //   "caption":  "Countries With Most Oil Reserves [2017-18]" ,
+    //   "subCaption":  "",
+    //   "xAxisName": "",
+    //   "yAxisName":  "",
+    //   "numberSuffix": "",
+    //   "theme": "carbon",
+    // },
   
     this.dataSource = {
         "chart": this.chartSetup,

@@ -1,4 +1,6 @@
-<app-dashboard-nav></app-dashboard-nav>
+<!-- <app-dashboard-nav></app-dashboard-nav> -->
+
+<!-- <app-clientes></app-clientes> -->
 <div class="field">
     <div>
         <mat-form-field class="mr-2">
@@ -14,12 +16,19 @@
         <button type="button" class="btn btn-light" (click)="onSubmit()">submit</button>
         <button type="button" class="btn btn-primary" (click)="buildTopVeicles()">build</button>
     </div>
-    <app-column2d></app-column2d>
 </div>
-<div *ngIf="topVeiclesData$ | async as topVeiclesData; else loading">
+<!-- <div *ngIf="topVeiclesData$ | async as topVeiclesData; else loading">
     <p>{{topVeiclesData}}</p>
     <app-column2d [chartData] = "topVeiclesData"></app-column2d>
 </div>
+
+<div *ngIf="avgFuelType$ | async as avgFuelType; else loading">
+    <p>{{topVeiclesData}}</p>
+    <app-column2d [chartData] = "avgFuelType"></app-column2d>
+</div>
+
+
+
 <ng-template #loading>
     <span>LOADING...</span>
-</ng-template>
+</ng-template> -->

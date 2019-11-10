@@ -17,21 +17,16 @@ export class DataVisualizationComponent implements OnInit {
   lastDate = new FormControl();
   chartSetup: ChartSetup;
 
-  render:boolean;
-
-  topVeiclesData$: Observable <ChartData[]>
+  topVeiclesData$: Observable <ChartData[]>;
+  avgFuelType$:  Observable <ChartData[]>;
 
   chartData: ChartData[];
 
   constructor(private dataService: ChartDataService) {
-    this.render = false;
   }
     
 
   ngOnInit() {
-    // this.dataService.getTopVeicles().subscribe(
-    //   data => this.chartData = data
-    // )
     this.topVeiclesData$ = this.dataService.getTopVeicles();
     console.log("dataVisualiation: "+ this.topVeiclesData$);
    }
@@ -47,6 +42,10 @@ export class DataVisualizationComponent implements OnInit {
 
 
   private buildTopVeicles(){
+    let to = new Date (this.initialDate.value);
+    let from = new Date (this.lastDate.value);
+    //this.avgFuelType$ = this.dataService.getAvgByFuel(1,to,from);
+    this.dataService.getAvgByFuel(1,to,from);
     
     //this.chartSetup.caption = "Consumo Por Tipo de Veiculo";
     console.log(this.dataService.getData())

@@ -7,7 +7,8 @@ import {
   MatFormFieldModule,
   MatButtonModule,
   MatNativeDateModule,
-  MatInputModule
+  MatInputModule,
+  MatSelectModule
 } from "@angular/material";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,15 +18,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // Import angular-fusioncharts
 import { FusionChartsModule } from "angular-fusioncharts";
-
 // Import FusionCharts library and chart modules
 import * as FusionCharts from "fusioncharts";
 import * as Charts from "fusioncharts/fusioncharts.charts";
-
 import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+
 import { Column2dComponent } from './components/data-visualization/column2d/column2d.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardNavComponent } from './components/data-visualization/dashboard-nav/dashboard-nav.component';
+import { ClientesComponent } from './components/data-visualization/clientes/clientes.component';
+import { FuelComponent } from './components/data-visualization/fuel/fuel.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { Line2dComponent } from './components/data-visualization/line2d/line2d.component';
+import { MultLine2dComponent } from './components/data-visualization/mult-line2d/mult-line2d.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -35,7 +40,12 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     AppComponent,
     DataVisualizationComponent,
     Column2dComponent,
-    DashboardNavComponent
+    DashboardNavComponent,
+    ClientesComponent,
+    FuelComponent,
+    HomePageComponent,
+    Line2dComponent,
+    MultLine2dComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +58,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
+    MatSelectModule,
     ReactiveFormsModule,
     FusionChartsModule,
     HttpClientModule

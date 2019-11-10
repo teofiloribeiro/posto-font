@@ -1,0 +1,47 @@
+h5{
+    font-size: 30px
+}
+
+hr {
+    display: block;
+    height: 5px;
+    max-width: 100px;
+    border: 0;
+    border-top: 5px solid red;
+    margin: 1em 0;
+    padding: 0;
+}
+.container-home{
+    margin-top: 80px;
+    position: relative;
+    text-align: center;
+}
+
+.main-card{
+    max-width: 700px;
+    min-height: 200px;
+    box-shadow: 5px 5px grey;
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    background-color: #242424;
+    color: white
+}
+.img{
+    top: 8px;
+    left: 16px;
+    min-width: 80%;
+    max-height: 700px;
+    // max-height: 800px;
+    // min-width: 100%;
+    
+}
+.sponsors{
+    max-width: 50px;
+    max-height: 20px;
+    float: right;
+}
+.logo{
+    max-width: 800px;
+    max-height: 80px;
+}
