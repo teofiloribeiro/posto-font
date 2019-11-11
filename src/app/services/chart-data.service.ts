@@ -19,12 +19,22 @@ export class ChartDataService {
   private readonly clientsByState = "/clientes/por_estado";
   private readonly clientsByCity = "/clientes/por_cidade";
   private readonly clientsByNeighborhood = "/clientes/por_bairro";
+  private readonly violine = "/violino/vendas_veiculo_combustivel"
 
 
   constructor(private http: HttpClient) { }
 
   getTopVeicles() {
     return this.http.get<ChartData[]>(`${this.API}${this.topVeicles}`)
+      .pipe(
+        tap(
+          console.log
+        )
+      )
+  }
+
+  getVioline(from: Date, to: Date){
+    return this.http.get<ChartData[]>(`${this.API}${this.violine}?data_inicial=${from.toISOString}&data_final=${to.toISOString}`)
       .pipe(
         tap(
           console.log
@@ -41,7 +51,7 @@ export class ChartDataService {
     let ethanolValues: FuelValue[] = [];
     let dieselValues: FuelValue[] = [];
     return this.http.get<ChartData[]>(`${this.API}${this.avgFuelPrice}?combustivelCod=${fuelCod}
-                                      &inicio=${from.toISOString()}&fim=${to.toISOString()}`
+                                      &inicio=${from.toLocaleString()}&fim=${to.toLocaleString()}`
     )
     // .subscribe(
     //   data => {

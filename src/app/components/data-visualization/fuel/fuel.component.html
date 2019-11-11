@@ -25,13 +25,37 @@
                     <button type="button" class="btn btn-light" (click)="onFuelAvg()">Ok</button>
                 </div>
                 <div *ngIf="dieselDataIsDone; else loading">
-                    <app-mult-line2d [chartSetup]="avgChartSetup" [dataset]="avgFuellineDataset" [categories]= "categories"></app-mult-line2d>
+                    <app-mult-line2d [chartSetup]="avgChartSetup" [dataset]="avgFuellineDataset"
+                        [categories]="categories"></app-mult-line2d>
                 </div>
 
             </div>
         </div>
     </div>
+    <div class="row">
+        <div id="violine" class="col-6">
+            <div class="field-border">
+                <div class="filter">
+                    <mat-form-field class="mr-2">
+                        <input matInput [matDatepicker]="beginVioline" placeholder="Choose a date" [formControl]="initialDateVioline">
+                        <mat-datepicker-toggle matSuffix [for]="beginVioline"></mat-datepicker-toggle>
+                        <mat-datepicker #beginVioline></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field class="mr-2">
+                        <input matInput [matDatepicker]="endVioline" placeholder="Choose a date" [formControl]="lastDateVioline">
+                        <mat-datepicker-toggle matSuffix [for]="endVioline"></mat-datepicker-toggle>
+                        <mat-datepicker #endVioline></mat-datepicker>
+                    </mat-form-field>
+                    <button type="button" class="btn btn-light" (click)="onVioline()">Ok</button>
+                </div>
+                <div *ngIf="violines$ | async as violine; else loading">
+                   {{violine.data}}
+                </div>
 
+            </div>
+        </div>
+
+    </div>
     <ng-template #loading>
         <span>LOADING...</span>
     </ng-template>

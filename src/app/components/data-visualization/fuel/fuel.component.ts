@@ -8,6 +8,10 @@ import { MultiLineDataset } from 'src/app/interfaces/multi-line-dataset';
 export interface FuelValue {
   value: string;
 }
+export interface ViolineType {
+  tituloGrafico: string;
+  imagemBase64: string;
+}
 @Component({
   selector: 'app-fuel',
   templateUrl: './fuel.component.html',
@@ -16,11 +20,14 @@ export interface FuelValue {
 export class FuelComponent implements OnInit {
   chartSetup: LineChartSetup;
   veiclesTypes$: Observable<ChartData[]>;
-
+  violines$: Observable<ViolineType>
   avgChartSetup: any;
 
   initialDate = new FormControl();
   lastDate = new FormControl();
+
+  initialDateVioline = new FormControl();
+  lastDateVioline = new FormControl();
 
   categories: any[];
   avgFuellineDataset: MultiLineDataset[] = [];
@@ -49,6 +56,15 @@ export class FuelComponent implements OnInit {
     }
     this.veiclesTypes$ = this.chartDataService.getTopVeicles();
   }
+
+
+  onVioline() {
+    let to = new Date(this.lastDateVioline.value);
+    let from = new Date(this.initialDateVioline.value);
+    this.violines$ = this.chartDataService.getVioline(from, to);
+  }
+
+
 
   onFuelAvg() {
     this.dieselDataIsDone = false;
@@ -100,15 +116,15 @@ export class FuelComponent implements OnInit {
             data.forEach(data => {
               dieselValues.push({
                 value: data.value.toString()
-              });              
+              });
             }
             )
           }
-        ) 
+        )
         resolve();
       }
 
-    ).then(()=>{
+    ).then(() => {
       this.avgFuellineDataset.push(
         {
           seriesname: "Gasolina",
