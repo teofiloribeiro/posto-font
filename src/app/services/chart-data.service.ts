@@ -32,7 +32,7 @@ export class ChartDataService {
       )
   }
 
-  async getAvgByFuel (fuelCod: number, from: Date, to: Date)  {
+  getAvgByFuel (fuelCod: number, from: Date, to: Date)  {
     let gasoline: ChartData[];
     let ethanol: ChartData[];
     let diesel: ChartData[];
@@ -40,50 +40,50 @@ export class ChartDataService {
     let gasolineValues: FuelValue[] = [];
     let ethanolValues: FuelValue[] = [];
     let dieselValues: FuelValue[] = [];
-
-    await this.http.get<ChartData[]>(`${this.API}${this.avgFuelPrice}?combustivelCod=1
+    return this.http.get<ChartData[]>(`${this.API}${this.avgFuelPrice}?combustivelCod=${fuelCod}
                                       &inicio=${from.toISOString()}&fim=${to.toISOString()}`
-    ).subscribe(
-      data => {
-        gasoline = data;
-        gasoline.forEach(data => {
-          categoties.push({
-            label: data.label
-          })
-          gasolineValues.push({
-            value: data.value.toString()
-          })
-        })
-      }
     )
-    await this.http.get<ChartData[]>(`${this.API}${this.avgFuelPrice}?combustivelCod=2
-                                      &inicio=${from.toISOString()}&fim=${to.toISOString()}`
-    ).subscribe(
-      data => {
-        data.forEach(data => {
-          ethanolValues.push({
-            value: data.value.toString()
-          });
-        }
-        )
-      }
-    )
-    await this.http.get<ChartData[]>(`${this.API}${this.avgFuelPrice}?combustivelCod=3
-                                      &inicio=${from.toISOString()}&fim=${to.toISOString()}`
-    ).subscribe(
-      data => {
-        data.forEach(data => {
-          dieselValues.push({
-            value: data.value.toString()
-          });
-        }
-        )
-      }
-    )
+    // .subscribe(
+    //   data => {
+    //     gasoline = data;
+    //     gasoline.forEach(data => {
+    //       categoties.push({
+    //         label: data.label
+    //       })
+    //       gasolineValues.push({
+    //         value: data.value.toString()
+    //       })
+    //     })
+    //   }
+    // )
+    // this.http.get<ChartData[]>(`${this.API}${this.avgFuelPrice}?combustivelCod=2
+    //                                   &inicio=${from.toISOString()}&fim=${to.toISOString()}`
+    // ).subscribe(
+    //   data => {
+    //     data.forEach(data => {
+    //       ethanolValues.push({
+    //         value: data.value.toString()
+    //       });
+    //     }
+    //     )
+    //   }
+    // )
+    // this.http.get<ChartData[]>(`${this.API}${this.avgFuelPrice}?combustivelCod=3
+    //                                   &inicio=${from.toISOString()}&fim=${to.toISOString()}`
+    // ).subscribe(
+    //   data => {
+    //     data.forEach(data => {
+    //       dieselValues.push({
+    //         value: data.value.toString()
+    //       });
+    //     }
+    //     )
+    //   }
+    // )
 
 
 
-    console.log(categoties);
+    // console.log(categoties);
 
   }
 
@@ -141,32 +141,6 @@ export class ChartDataService {
 
   }
 
-  getData() {
-    return [{
-      "label": "Venezuela",
-      "value": "290"
-    }, {
-      "label": "Saudi",
-      "value": "260"
-    }, {
-      "label": "Canada",
-      "value": "180"
-    }, {
-      "label": "Iran",
-      "value": "140"
-    }, {
-      "label": "Russia",
-      "value": "115"
-    }, {
-      "label": "UAE",
-      "value": "100"
-    }, {
-      "label": "US",
-      "value": "30"
-    }, {
-      "label": "China",
-      "value": "30"
-    }]
-  }
+
 
 }

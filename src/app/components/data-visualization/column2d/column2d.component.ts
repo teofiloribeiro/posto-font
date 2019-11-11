@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
- import { ChartSource } from 'src/app/interfaces/chart-source';
+import { ChartSource } from 'src/app/interfaces/chart-source';
 import { ChartDataService } from 'src/app/services/chart-data.service';
 import { ChartData } from 'src/app/interfaces/chart-data';
 import { ChartSetup } from 'src/app/interfaces/chart-setup';
@@ -15,36 +15,22 @@ export class Column2dComponent implements OnInit {
   @Input() chartSetup: ChartSetup;
   dataSource: Object;
   chartConfig: Object;
-  
+
 
   constructor() {
-    
     this.chartConfig = {
       width: '800',
       height: '500',
       type: 'column3d',
       dataFormat: 'json',
     };
-  
-
-  
-
-   }
+  }
 
   ngOnInit() {
-    // this.chartSetup = {
-    //   "caption":  "Countries With Most Oil Reserves [2017-18]" ,
-    //   "subCaption":  "",
-    //   "xAxisName": "",
-    //   "yAxisName":  "",
-    //   "numberSuffix": "",
-    //   "theme": "carbon",
-    // },
-  
     this.dataSource = {
-        "chart": this.chartSetup,
-        "data": this.chartData
-      };
+      "chart": this.chartSetup,
+      "data": this.chartData
+    };
   }
 
 }

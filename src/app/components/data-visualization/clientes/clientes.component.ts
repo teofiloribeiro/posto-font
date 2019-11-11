@@ -15,19 +15,22 @@ export interface SelectType {
   styleUrls: ['./clientes.component.scss']
 })
 export class ClientesComponent implements OnInit {
+  //Dropbox
   states: SelectType[];
   cities: SelectType[];
 
-
+  //Charts Config
   clientesByStateChart:ChartSetup;
   clientesByCityChart:ChartSetup;
   clientesByCountryChart: ChartSetup;
-  veiclesTypes: ChartSetup;
+  veiclesTypesChart: ChartSetup;
 
+  //Dorpbox Selected
   clientesByState: string;
   clientesByCityState:string;
   clientsByCityCity: string;
 
+  //Get ch  art data
   clientesByState$: Observable <ChartData[]>;
   clientesByCity$: Observable <ChartData[]>;
   clientesByCountry$: Observable <ChartData[]>;
@@ -48,7 +51,7 @@ export class ClientesComponent implements OnInit {
       subCaption: ""
     }
 
-    this.veiclesTypes= {
+    this.veiclesTypesChart= {
       caption: "Tipo de Veiculos dos Nossos Clientes",
       numberSuffix: "K",
       xAxisName: "Tipos de Veiculos",

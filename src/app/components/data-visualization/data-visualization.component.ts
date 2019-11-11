@@ -47,9 +47,7 @@ export class DataVisualizationComponent implements OnInit {
     //this.avgFuelType$ = this.dataService.getAvgByFuel(1,to,from);
     this.dataService.getAvgByFuel(1,to,from);
     
-    //this.chartSetup.caption = "Consumo Por Tipo de Veiculo";
-    console.log(this.dataService.getData())
-    //this.render =true;
+
 
   }
 

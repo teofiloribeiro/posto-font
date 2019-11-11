@@ -1,3 +1,39 @@
-<p>fuel works!</p>
-<app-line2d></app-line2d>
-<app-mult-line2d></app-mult-line2d>
+<div class="dashboard-container">
+    <div class="row">
+        <div id="fuelAvg" class="col-6">
+            <div class="field-border">
+                <div class="filter"></div>
+                <div *ngIf="veiclesTypes$ | async as veiclesTypes; else loading">
+                    <app-line2d [chartData]="veiclesTypes" [chartSetup]="chartSetup"></app-line2d>
+                </div>
+            </div>
+        </div>
+
+        <div id="fuelAvg" class="col-6">
+            <div class="field-border">
+                <div class="filter">
+                    <mat-form-field class="mr-2">
+                        <input matInput [matDatepicker]="begin" placeholder="Choose a date" [formControl]="initialDate">
+                        <mat-datepicker-toggle matSuffix [for]="begin"></mat-datepicker-toggle>
+                        <mat-datepicker #begin></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field class="mr-2">
+                        <input matInput [matDatepicker]="end" placeholder="Choose a date" [formControl]="lastDate">
+                        <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+                        <mat-datepicker #end></mat-datepicker>
+                    </mat-form-field>
+                    <button type="button" class="btn btn-light" (click)="onFuelAvg()">Ok</button>
+                </div>
+                <div *ngIf="dieselDataIsDone; else loading">
+                    <app-mult-line2d [chartSetup]="avgChartSetup" [dataset]="avgFuellineDataset" [categories]= "categories"></app-mult-line2d>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <ng-template #loading>
+        <span>LOADING...</span>
+    </ng-template>
+
+</div>
