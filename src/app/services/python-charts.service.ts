@@ -14,6 +14,9 @@ export class PythonChartsService {
   private readonly veiclesFuels = "/violino/vendas_veiculo_combustivel";
   private readonly topAndLosers= "";
   private readonly salesPerMonth="";
+  private readonly seasonalityPerWeek="/vendas/sazonalidade/semanal";
+  private readonly seasonalityPerMonth="/vendas/sazonalidade/mensal";
+  private readonly seasonalityPerYear="/vendas/sazonalidade/anual";
 
   
   constructor(private http: HttpClient) { }
@@ -35,6 +38,31 @@ export class PythonChartsService {
   }
   getSalesPerMonth(from: Date, to: Date){
     return this.http.get<any>(`${this.API}${this.salesPerMonth}?data_inicial=${from.toLocaleString()}&data_final=${to.toLocaleString()}`)
+      .pipe(
+        tap(
+          console.log
+        )
+      )
+  }
+
+  getSeasonalityPerWeek(from: Date, to: Date) {
+    return this.http.get<any>(`${this.API}${this.seasonalityPerWeek}?data_inicial=${from.toLocaleString()}&data_final=${to.toLocaleString()}`)
+      .pipe(
+        tap(
+          console.log
+        )
+      )
+  }
+  getSeasonalityPerMonth(from: Date, to: Date) {
+    return this.http.get<any>(`${this.API}${this.seasonalityPerMonth}?data_inicial=${from.toLocaleString()}&data_final=${to.toLocaleString()}`)
+      .pipe(
+        tap(
+          console.log
+        )
+      )
+  }
+  getSeasonalityPerYear(from: Date, to: Date) {
+    return this.http.get<any>(`${this.API}${this.seasonalityPerYear}?data_inicial=${from.toLocaleString()}&data_final=${to.toLocaleString()}`)
       .pipe(
         tap(
           console.log

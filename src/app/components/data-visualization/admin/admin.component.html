@@ -4,12 +4,14 @@
             <div class="filter">
                 <p>Cotação dos Combustiveis</p>
                 <mat-form-field class="mr-2">
-                    <input matInput [matDatepicker]="fuelPriceBegin" placeholder="Choose a date" [formControl]="fuelPrinceInitialDate">
+                    <input matInput [matDatepicker]="fuelPriceBegin" placeholder="Choose a date"
+                        [formControl]="fuelPrinceInitialDate">
                     <mat-datepicker-toggle matSuffix [for]="fuelPriceBegin"></mat-datepicker-toggle>
                     <mat-datepicker #fuelPriceBegin></mat-datepicker>
                 </mat-form-field>
                 <mat-form-field class="mr-2">
-                    <input matInput [matDatepicker]="fuelPriceEnd" placeholder="Choose a date" [formControl]="fuelPriceFinalDate">
+                    <input matInput [matDatepicker]="fuelPriceEnd" placeholder="Choose a date"
+                        [formControl]="fuelPriceFinalDate">
                     <mat-datepicker-toggle matSuffix [for]="fuelPriceEnd"></mat-datepicker-toggle>
                     <mat-datepicker #fuelPriceEnd></mat-datepicker>
                 </mat-form-field>
@@ -21,29 +23,105 @@
             </div>
         </div>
     </div>
-    <div id="topAndLosers" class="col-12">
-            <div class="field-border">
-                <div class="filter">
-                    <p>Maiores e Menores Lucradores</p>
-                    <mat-form-field class="mr-2">
-                        <input matInput [matDatepicker]="beginTopLoser" placeholder="Choose a date"
-                            [formControl]="topAndLoserInitialDate">
-                        <mat-datepicker-toggle matSuffix [for]="beginVTopLoser"></mat-datepicker-toggle>
-                        <mat-datepicker #beginVTopLoser></mat-datepicker>
-                    </mat-form-field>
-                    <mat-form-field class="mr-2">
-                        <input matInput [matDatepicker]="endTopLoser" placeholder="Choose a date"
-                            [formControl]="topAndLoserFinalDate">
-                        <mat-datepicker-toggle matSuffix [for]="endTopLoser"></mat-datepicker-toggle>
-                        <mat-datepicker #endTopLoser></mat-datepicker>
-                    </mat-form-field>
-                    <button type="button" class="btn btn-light" (click)="onTopAndLoserStations()">Ok</button>
-                </div>
-                <div *ngIf="topAndLosersData$ | async as topAndLosersData; else loading">
-                    <img [src]="topAndLosersData.imagemBase64">
-                </div>
+    <div id="seasonalityPerWeek" class="col-12">
+        <div class="field-border">
+            <div class="filter">
+                <p>Sazonalidade Por Semana</p>
+                <mat-form-field class="mr-2">
+                    <input matInput [matDatepicker]="beginSeasonalityPerWeek" placeholder="Choose a date"
+                        [formControl]="seasonalityPerWeekInitialDate">
+                    <mat-datepicker-toggle matSuffix [for]="beginSeasonalityPerWeek"></mat-datepicker-toggle>
+                    <mat-datepicker #beginSeasonalityPerWeek></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="mr-2">
+                    <input matInput [matDatepicker]="endSeasonalityPerWeek" placeholder="Choose a date"
+                        [formControl]="seasonalityPerWeekFinalDate">
+                    <mat-datepicker-toggle matSuffix [for]="endSeasonalityPerWeek"></mat-datepicker-toggle>
+                    <mat-datepicker #endSeasonalityPerWeek></mat-datepicker>
+                </mat-form-field>
+                <button type="button" class="btn btn-light" (click)="onTopAndLoserStations()">Ok</button>
+            </div>
+            <div *ngIf="seasonalityPerWeek$ | async as seasonalityPerWeek; else loading">
+                <img [src]="seasonalityPerWeek.imagemBase64">
             </div>
         </div>
+    </div>
+
+    <div id="seasonalityPerMonth" class="col-12">
+        <div class="field-border">
+            <div class="filter">
+                <p>Sazonalidade Por Mês</p>
+                <mat-form-field class="mr-2">
+                    <input matInput [matDatepicker]="beginSeasonalityPerMonth" placeholder="Choose a date"
+                        [formControl]="seasonalityPerMonthInitialDate">
+                    <mat-datepicker-toggle matSuffix [for]="beginSeasonalityPerMonth"></mat-datepicker-toggle>
+                    <mat-datepicker #beginSeasonalityPerMonth></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="mr-2">
+                    <input matInput [matDatepicker]="endSeasonalityPerMonth" placeholder="Choose a date"
+                        [formControl]="seasonalityPerMonthFinalDate">
+                    <mat-datepicker-toggle matSuffix [for]="endSeasonalityPerMonth"></mat-datepicker-toggle>
+                    <mat-datepicker #endSeasonalityPerMonth></mat-datepicker>
+                </mat-form-field>
+                <button type="button" class="btn btn-light" (click)="onTopAndLoserStations()">Ok</button>
+            </div>
+            <div *ngIf="seasonalityPerMonth$ | async as seasonalityPerMonth; else loading">
+                <img [src]="seasonalityPerMonth.imagemBase64">
+            </div>
+        </div>
+    </div>
+
+    <div id="seasonalityPerYear" class="col-12">
+        <div class="field-border">
+            <div class="filter">
+                <p>Sazonalidade Por Ano</p>
+                <mat-form-field class="mr-2">
+                    <input matInput [matDatepicker]="beginSeasonalityPerYear" placeholder="Choose a date"
+                        [formControl]="seasonalityPerYearInitialDate">
+                    <mat-datepicker-toggle matSuffix [for]="beginSeasonalityPerYear"></mat-datepicker-toggle>
+                    <mat-datepicker #beginSeasonalityPerYear></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="mr-2">
+                    <input matInput [matDatepicker]="endSeasonalityPerYear" placeholder="Choose a date"
+                        [formControl]="seasonalityPerYearFinalDate">
+                    <mat-datepicker-toggle matSuffix [for]="endSeasonalityPerYear"></mat-datepicker-toggle>
+                    <mat-datepicker #endSeasonalityPerYear></mat-datepicker>
+                </mat-form-field>
+                <button type="button" class="btn btn-light" (click)="onTopAndLoserStations()">Ok</button>
+            </div>
+            <div *ngIf="seasonalityPerYear$ | async as seasonalityPerYear; else loading">
+                <img [src]="seasonalityPerYear.imagemBase64">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="topAndLosers" class="col-12">
+        <div class="field-border">
+            <div class="filter">
+                <p>Maiores e Menores Lucradores</p>
+                <mat-form-field class="mr-2">
+                    <input matInput [matDatepicker]="beginTopLoser" placeholder="Choose a date"
+                        [formControl]="topAndLoserInitialDate">
+                    <mat-datepicker-toggle matSuffix [for]="beginVTopLoser"></mat-datepicker-toggle>
+                    <mat-datepicker #beginVTopLoser></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="mr-2">
+                    <input matInput [matDatepicker]="endTopLoser" placeholder="Choose a date"
+                        [formControl]="topAndLoserFinalDate">
+                    <mat-datepicker-toggle matSuffix [for]="endTopLoser"></mat-datepicker-toggle>
+                    <mat-datepicker #endTopLoser></mat-datepicker>
+                </mat-form-field>
+                <button type="button" class="btn btn-light" (click)="onTopAndLoserStations()">Ok</button>
+            </div>
+            <div *ngIf="topAndLosersData$ | async as topAndLosersData; else loading">
+                <img [src]="topAndLosersData.imagemBase64">
+            </div>
+        </div>
+    </div>
     <ng-template #loading>
         <span>LOADING...</span>
     </ng-template>

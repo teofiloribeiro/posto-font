@@ -24,11 +24,22 @@ export class AdminComponent implements OnInit {
   topAndLoserInitialDate = new FormControl();
   topAndLoserFinalDate = new FormControl();
 
+  seasonalityPerWeekInitialDate = new FormControl();
+  seasonalityPerWeekFinalDate = new FormControl();
+
+  seasonalityPerMonthInitialDate = new FormControl();
+  seasonalityPerMonthFinalDate = new FormControl();
+  
+  seasonalityPerYearInitialDate = new FormControl();
+  seasonalityPerYearFinalDate = new FormControl();
   
   fuelPriceSetup: any;
 
-  fuelPriceData$: Observable<any[]>
-  topAndLosersData$: Observable<PythonType>
+  fuelPriceData$: Observable<any[]>;
+  topAndLosersData$: Observable<PythonType>;
+  seasonalityPerWeek$: Observable<PythonType>
+  seasonalityPeMonth$: Observable<PythonType>
+  seasonalityPerYear$: Observable<PythonType>
 
   categories: any[];
 
@@ -57,8 +68,25 @@ export class AdminComponent implements OnInit {
     let from = new Date(this.fuelPrinceInitialDate.value);
     let to = new Date(this.fuelPriceFinalDate.value);
 
-    this.topAndLosersData$ = this.pyChartsService.getTopAndLosers(from,to);
-    
+    this.topAndLosersData$ = this.pyChartsService.getTopAndLosers(from,to);  
+  }
+  onSeasonalityPerWeek(){
+    let from = new Date(this.seasonalityPerWeekInitialDate.value);
+    let to = new Date(this.seasonalityPerWeekInitialDate.value);
+
+    this.seasonalityPerWeek$ = this.pyChartsService.getSeasonalityPerWeek(from,to);  
+  }
+  onSeasonalityPerMonth(){
+    let from = new Date(this.seasonalityPerMonthInitialDate.value);
+    let to = new Date(this.seasonalityPerMonthInitialDate.value);
+
+    this.seasonalityPerWeek$ = this.pyChartsService.getSeasonalityPerMonth(from,to);  
+  }
+  onSeasonalityPerYear(){
+    let from = new Date(this.seasonalityPerYearInitialDate.value);
+    let to = new Date(this.seasonalityPerYearInitialDate.value);
+
+    this.seasonalityPerWeek$ = this.pyChartsService.getSeasonalityPerYear(from,to);  
   }
 
 }
