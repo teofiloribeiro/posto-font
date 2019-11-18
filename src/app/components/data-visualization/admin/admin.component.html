@@ -39,7 +39,7 @@
                     <mat-datepicker-toggle matSuffix [for]="endSeasonalityPerWeek"></mat-datepicker-toggle>
                     <mat-datepicker #endSeasonalityPerWeek></mat-datepicker>
                 </mat-form-field>
-                <button type="button" class="btn btn-light" (click)="onTopAndLoserStations()">Ok</button>
+                <button type="button" class="btn btn-light" (click)="onSeasonalityPerWeek()">Ok</button>
             </div>
             <div *ngIf="seasonalityPerWeek$ | async as seasonalityPerWeek; else loading">
                 <img [src]="seasonalityPerWeek.imagemBase64">
@@ -63,7 +63,7 @@
                     <mat-datepicker-toggle matSuffix [for]="endSeasonalityPerMonth"></mat-datepicker-toggle>
                     <mat-datepicker #endSeasonalityPerMonth></mat-datepicker>
                 </mat-form-field>
-                <button type="button" class="btn btn-light" (click)="onTopAndLoserStations()">Ok</button>
+                <button type="button" class="btn btn-light" (click)="onSeasonalityPerMonth()">Ok</button>
             </div>
             <div *ngIf="seasonalityPerMonth$ | async as seasonalityPerMonth; else loading">
                 <img [src]="seasonalityPerMonth.imagemBase64">
@@ -87,7 +87,7 @@
                     <mat-datepicker-toggle matSuffix [for]="endSeasonalityPerYear"></mat-datepicker-toggle>
                     <mat-datepicker #endSeasonalityPerYear></mat-datepicker>
                 </mat-form-field>
-                <button type="button" class="btn btn-light" (click)="onTopAndLoserStations()">Ok</button>
+                <button type="button" class="btn btn-light" (click)="onSeasonalityPerYear()">Ok</button>
             </div>
             <div *ngIf="seasonalityPerYear$ | async as seasonalityPerYear; else loading">
                 <img [src]="seasonalityPerYear.imagemBase64">

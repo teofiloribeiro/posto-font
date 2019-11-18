@@ -21,7 +21,7 @@ export class PythonChartsService {
   
   constructor(private http: HttpClient) { }
   getVeiclesFuel(from: Date, to: Date) {
-    return this.http.get<any>(`${this.API}${this.veiclesFuels}?data_inicial=${from.toLocaleString()}&data_final=${to.toLocaleString()}`)
+    return this.http.get<any>(`${this.API}${this.veiclesFuels}?data_inicial=${from.toISOString()}&data_final=${to.toISOString()}`)
       .pipe(
         tap(
           console.log
@@ -29,7 +29,7 @@ export class PythonChartsService {
       )
   }
   getTopAndLosers(from: Date, to: Date){
-    return this.http.get<any>(`${this.API}${this.topAndLosers}?data_inicial=${from.toLocaleString()}&data_final=${to.toLocaleString()}`)
+    return this.http.get<any>(`${this.API}${this.topAndLosers}?data_inicial=${from.toISOString()}&data_final=${to.toISOString()}`)
       .pipe(
         tap(
           console.log
@@ -37,7 +37,7 @@ export class PythonChartsService {
       )
   }
   getSalesPerMonth(from: Date, to: Date){
-    return this.http.get<any>(`${this.API}${this.salesPerMonth}?data_inicial=${from.toLocaleString()}&data_final=${to.toLocaleString()}`)
+    return this.http.get<any>(`${this.API}${this.salesPerMonth}?data_inicial=${from.toISOString()}&data_final=${to.toISOString()}`)
       .pipe(
         tap(
           console.log
@@ -46,7 +46,7 @@ export class PythonChartsService {
   }
 
   getSeasonalityPerWeek(from: Date, to: Date) {
-    return this.http.get<any>(`${this.API}${this.seasonalityPerWeek}?data_inicial=${from.toLocaleString()}&data_final=${to.toLocaleString()}`)
+    return this.http.get<any>(`${this.API}${this.seasonalityPerWeek}?data_inicial=${from.toISOString()}&data_final=${to.toISOString()}`)
       .pipe(
         tap(
           console.log
@@ -54,7 +54,7 @@ export class PythonChartsService {
       )
   }
   getSeasonalityPerMonth(from: Date, to: Date) {
-    return this.http.get<any>(`${this.API}${this.seasonalityPerMonth}?data_inicial=${from.toLocaleString()}&data_final=${to.toLocaleString()}`)
+    return this.http.get<any>(`${this.API}${this.seasonalityPerMonth}?data_inicial=${from.toISOString()}&data_final=${to.toISOString()}`)
       .pipe(
         tap(
           console.log
@@ -62,7 +62,7 @@ export class PythonChartsService {
       )
   }
   getSeasonalityPerYear(from: Date, to: Date) {
-    return this.http.get<any>(`${this.API}${this.seasonalityPerYear}?data_inicial=${from.toLocaleString()}&data_final=${to.toLocaleString()}`)
+    return this.http.get<any>(`${this.API}${this.seasonalityPerYear}?data_inicial=${from.toISOString()}&data_final=${to.toISOString()}`)
       .pipe(
         tap(
           console.log
