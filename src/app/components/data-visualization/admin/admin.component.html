@@ -1,0 +1,50 @@
+<div class="dashboard-container">
+    <div id="fuelPrice" class="col-12">
+        <div class="field-border">
+            <div class="filter">
+                <p>Cotação dos Combustiveis</p>
+                <mat-form-field class="mr-2">
+                    <input matInput [matDatepicker]="fuelPriceBegin" placeholder="Choose a date" [formControl]="fuelPrinceInitialDate">
+                    <mat-datepicker-toggle matSuffix [for]="fuelPriceBegin"></mat-datepicker-toggle>
+                    <mat-datepicker #fuelPriceBegin></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="mr-2">
+                    <input matInput [matDatepicker]="fuelPriceEnd" placeholder="Choose a date" [formControl]="fuelPriceFinalDate">
+                    <mat-datepicker-toggle matSuffix [for]="fuelPriceEnd"></mat-datepicker-toggle>
+                    <mat-datepicker #fuelPriceEnd></mat-datepicker>
+                </mat-form-field>
+                <button type="button" class="btn btn-light" (click)="onFuelPrice()">Ok</button>
+            </div>
+            <div *ngIf="fuelPriceData$ | async as fuelPriceData; else loading">
+                <app-mult-line2d [chartSetup]="fuelPriceSetup" [dataset]="fuelPriceData" [categories]="categories">
+                </app-mult-line2d>
+            </div>
+        </div>
+    </div>
+    <div id="topAndLosers" class="col-12">
+            <div class="field-border">
+                <div class="filter">
+                    <p>Maiores e Menores Lucradores</p>
+                    <mat-form-field class="mr-2">
+                        <input matInput [matDatepicker]="beginTopLoser" placeholder="Choose a date"
+                            [formControl]="topAndLoserInitialDate">
+                        <mat-datepicker-toggle matSuffix [for]="beginVTopLoser"></mat-datepicker-toggle>
+                        <mat-datepicker #beginVTopLoser></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field class="mr-2">
+                        <input matInput [matDatepicker]="endTopLoser" placeholder="Choose a date"
+                            [formControl]="topAndLoserFinalDate">
+                        <mat-datepicker-toggle matSuffix [for]="endTopLoser"></mat-datepicker-toggle>
+                        <mat-datepicker #endTopLoser></mat-datepicker>
+                    </mat-form-field>
+                    <button type="button" class="btn btn-light" (click)="onTopAndLoserStations()">Ok</button>
+                </div>
+                <div *ngIf="topAndLosersData$ | async as topAndLosersData; else loading">
+                    <img [src]="topAndLosersData.imagemBase64">
+                </div>
+            </div>
+        </div>
+    <ng-template #loading>
+        <span>LOADING...</span>
+    </ng-template>
+</div>

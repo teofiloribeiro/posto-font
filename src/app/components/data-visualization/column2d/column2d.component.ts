@@ -21,7 +21,7 @@ export class Column2dComponent implements OnInit {
     this.chartConfig = {
       width: '800',
       height: '500',
-      type: 'column3d',
+      type: 'column2d',
       dataFormat: 'json',
     };
   }

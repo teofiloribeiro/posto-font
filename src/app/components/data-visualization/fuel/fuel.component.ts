@@ -5,10 +5,11 @@ import { ChartDataService } from 'src/app/services/chart-data.service';
 import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { MultiLineDataset } from 'src/app/interfaces/multi-line-dataset';
+import { PythonChartsService } from 'src/app/services/python-charts.service';
 export interface FuelValue {
   value: string;
 }
-export interface ViolineType {
+export interface PythonType {
   tituloGrafico: string;
   imagemBase64: string;
 }
@@ -20,7 +21,7 @@ export interface ViolineType {
 export class FuelComponent implements OnInit {
   chartSetup: LineChartSetup;
   veiclesTypes$: Observable<ChartData[]>;
-  violines$: Observable<ViolineType>
+  violines$: Observable<PythonType>
   avgChartSetup: any;
 
   initialDate = new FormControl();
@@ -36,7 +37,7 @@ export class FuelComponent implements OnInit {
   dieselDataIsDone: boolean;
 
 
-  constructor(private chartDataService: ChartDataService) { }
+  constructor(private chartDataService: ChartDataService, private pyChartService: PythonChartsService) { }
 
   ngOnInit() {
     this.chartSetup = {
@@ -44,7 +45,7 @@ export class FuelComponent implements OnInit {
       lineThickness: "2",
       xAxisName: "Anos",
       yAxisName: "Total",
-      theme: "ocean",
+      theme: "fusion",
       subCaption: ""
     }
 
@@ -52,16 +53,17 @@ export class FuelComponent implements OnInit {
       caption: "Valor Médio dos Combustiveis por Mês",
       subCaption: "",
       xAxisName: "Meses",
-      theme: "ocean"
+      theme: "fusion"
     }
-    this.veiclesTypes$ = this.chartDataService.getTopVeicles();
+    //this.veiclesTypes$ = this.chartDataService.getTopVeicles();
   }
 
 
   onVioline() {
     let to = new Date(this.lastDateVioline.value);
     let from = new Date(this.initialDateVioline.value);
-    this.violines$ = this.chartDataService.getVioline(from, to);
+    console.log(new Date(this.lastDateVioline.value))
+    this.violines$ = this.pyChartService.getVeiclesFuel(from, to);
   }
 
 

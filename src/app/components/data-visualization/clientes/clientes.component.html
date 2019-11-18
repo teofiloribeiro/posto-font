@@ -1,16 +1,19 @@
 <div class="dashboard-container">
     <div class="row">
-        <div id="clientsByCountry" class="col-6">
+        <div id="clientsByCountry" class="col-12">
             <div class="field-border">
-                <div class="filter"></div>
+                <div class="filter">
+                    <p>Clientes No País</p>
+                </div>
                 <div *ngIf="clientesByCountry$ | async as clientesByCountry; else loading">
                     <app-column2d [chartData]="clientesByCountry" [chartSetup]="clientesByCountryChart"></app-column2d>
                 </div>
             </div>
         </div>
-        <div id="clientsByState" class="col-6">
+        <div id="clientsByState" class="col-12">
             <div class="field-border">
                 <div class="filter">
+                    <p>Clientes Por Estado</p>
                     <mat-form-field>
                         <mat-label>Estado</mat-label>
                         <mat-select [(value)]="clientesByState">
@@ -30,13 +33,14 @@
 
     <div class="row mt-3">
 
-        <div id="clientsByNeighbor" class="col-6">
+        <div id="clientsByNeighbor" class="col-12">
             <div class="field-border">
-                <div>
+                <div class="filter">
+                    <p>Clientes Por Cidade</p>
                     <mat-form-field class="ml-3">
                         <mat-label>Estado</mat-label>
                         <mat-select [(value)]="clientesByCityState">
-                            <mat-option *ngFor="let state of states" [value]="state.value">
+                            <mat-option *ngFor="let state of states" [value]="state.value"  (click)="onStateSelected(state.value)">
                                 {{state.viewValue}}
                             </mat-option>
                         </mat-select>
@@ -56,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div id="veiclesTypes" class="col-6">
+        <!-- <div id="veiclesTypes" class="col-12">
             <div class="field-border">
                 <div class="filter"></div>
                 <div *ngIf="veiclesTypes$ | async as veiclesTypes; else loading">
@@ -64,9 +68,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <ng-template #loading>
-        <span>LOADING...</span>
-    </ng-template>
-</div>
+        <ng-template #loading>
+            <span>LOADING...</span>
+        </ng-template>
+    </div>

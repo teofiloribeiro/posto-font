@@ -4,12 +4,14 @@ import { ClientesComponent } from './components/data-visualization/clientes/clie
 import { FuelComponent } from './components/data-visualization/fuel/fuel.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { DataVisualizationComponent } from './components/data-visualization/data-visualization.component';
+import { AdminComponent } from './components/data-visualization/admin/admin.component';
 
 
 const routes: Routes = [
   {path: '', component: HomePageComponent },
   {path: 'clientes', component: ClientesComponent },
-  {path: 'fuel', component: FuelComponent }
+  {path: 'fuel', component: FuelComponent },
+  {path: 'admin', component: AdminComponent }
 ];
 
 @NgModule({

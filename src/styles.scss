@@ -5,15 +5,17 @@ html, body { height: 100%; }
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
-    background-color: rgba(247, 244, 244, 0.514);
+    background: #ffffff;
+    //background-color: rgba(247, 244, 244, 0.514);
 }
 .field-border{
-    border: 2px;
-    border-style: solid;
-    border-color: rgb(145, 140, 140);
+    //border: 2px;
+    // border-style: solid;
+    // border-color: rgb(145, 140, 140);
+    border-bottom: 1px solid #7070703a;
     min-width: 600px;
     min-height: 550px;
-    padding: 10px;
+    padding: 30px 10px;
     text-align: center;
     
 }

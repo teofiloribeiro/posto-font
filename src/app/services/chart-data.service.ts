@@ -19,10 +19,20 @@ export class ChartDataService {
   private readonly clientsByState = "/clientes/por_estado";
   private readonly clientsByCity = "/clientes/por_cidade";
   private readonly clientsByNeighborhood = "/clientes/por_bairro";
-  private readonly violine = "/violino/vendas_veiculo_combustivel"
+  private readonly violine = "/violino/vendas_veiculo_combustivel";
+  private readonly fuelPrice = "/combustivel/cotacao_combustivel"; //quoatation
 
 
   constructor(private http: HttpClient) { }
+
+  getFuelPrice(from: Date, to: Date) {
+    return this.http.get<ChartData[]>(`${this.API}${this.fuelPrice}?dataInicio=${from.toISOString()}&dataFim=${to.toISOString()}`)
+      .pipe(
+        tap(
+          console.log
+        )
+      )
+  }
 
   getTopVeicles() {
     return this.http.get<ChartData[]>(`${this.API}${this.topVeicles}`)
@@ -33,68 +43,10 @@ export class ChartDataService {
       )
   }
 
-  getVioline(from: Date, to: Date){
-    return this.http.get<ChartData[]>(`${this.API}${this.violine}?data_inicial=${from.toISOString}&data_final=${to.toISOString}`)
-      .pipe(
-        tap(
-          console.log
-        )
-      )
-  }
-
-  getAvgByFuel (fuelCod: number, from: Date, to: Date)  {
-    let gasoline: ChartData[];
-    let ethanol: ChartData[];
-    let diesel: ChartData[];
-    let categoties: any[] = [];
-    let gasolineValues: FuelValue[] = [];
-    let ethanolValues: FuelValue[] = [];
-    let dieselValues: FuelValue[] = [];
+  getAvgByFuel(fuelCod: number, from: Date, to: Date) {
     return this.http.get<ChartData[]>(`${this.API}${this.avgFuelPrice}?combustivelCod=${fuelCod}
-                                      &inicio=${from.toLocaleString()}&fim=${to.toLocaleString()}`
+                                      &inicio=${from.toISOString()}&fim=${to.toISOString()}`
     )
-    // .subscribe(
-    //   data => {
-    //     gasoline = data;
-    //     gasoline.forEach(data => {
-    //       categoties.push({
-    //         label: data.label
-    //       })
-    //       gasolineValues.push({
-    //         value: data.value.toString()
-    //       })
-    //     })
-    //   }
-    // )
-    // this.http.get<ChartData[]>(`${this.API}${this.avgFuelPrice}?combustivelCod=2
-    //                                   &inicio=${from.toISOString()}&fim=${to.toISOString()}`
-    // ).subscribe(
-    //   data => {
-    //     data.forEach(data => {
-    //       ethanolValues.push({
-    //         value: data.value.toString()
-    //       });
-    //     }
-    //     )
-    //   }
-    // )
-    // this.http.get<ChartData[]>(`${this.API}${this.avgFuelPrice}?combustivelCod=3
-    //                                   &inicio=${from.toISOString()}&fim=${to.toISOString()}`
-    // ).subscribe(
-    //   data => {
-    //     data.forEach(data => {
-    //       dieselValues.push({
-    //         value: data.value.toString()
-    //       });
-    //     }
-    //     )
-    //   }
-    // )
-
-
-
-    // console.log(categoties);
-
   }
 
   getClietesByCountry() {
@@ -135,15 +87,30 @@ export class ChartDataService {
   getStates() {
     return [
       { value: 'PE', viewValue: 'Pernambuco' },
-      { value: 'SP', viewValue: 'São Paulo' },
-      { value: 'RJ', viewValue: 'Rio de Janeiro' }
+      { value: 'SP', viewValue: 'São Paulo' }
     ]
   }
-  getCities() {
+  getCities(value: string) {
+    switch(value){
+      case "PE":
+        return this.citiesPE();
+      case "SP":
+        return this.citiesSP();
+    }
+  }
+
+  citiesPE(){
     return [
-      { value: 'Paulista', viewValue: 'Paulista' },
-      { value: 'Recife', viewValue: 'Recife' },
-      { value: 'Olinda', viewValue: 'Olinda' }
+      { value: 'Caruaru', viewValue: 'Caruaru' },
+      { value: 'Recife', viewValue: 'Recife' }
+    ]
+  }
+  citiesSP(){
+    return [
+      { value: 'Campinas', viewValue: 'Campinas' },
+      { value: 'Guarulhos', viewValue: 'Guarulhos' },
+      { value: 'São Paulo', viewValue: 'São Paulo' }
+      
     ]
   }
 

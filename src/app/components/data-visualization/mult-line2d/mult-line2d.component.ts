@@ -12,16 +12,12 @@ export class MultLine2dComponent implements OnInit {
   @Input() chartSetup: ChartSetup;
   @Input() dataset: MultiLineDataset[];
   @Input() categories: any[];
+  @Input() chartType: string;
 
   dataSource: Object;
   chartConfig: Object;
   constructor() { 
-    this.chartConfig = {
-      width: '800',
-      height: '500',
-      type: 'msline',
-      dataFormat: 'json',
-    };
+    
   }
 
   ngOnInit() {
@@ -29,8 +25,12 @@ export class MultLine2dComponent implements OnInit {
     console.log(this.chartSetup)
     console.log(this.dataset)
     console.log(this.categories)
-
-
+    this.chartConfig = {
+      width: '800',
+      height: '500',
+      type: this.chartType ? this.chartType:'msline',
+      dataFormat: 'json',
+    };
 
     this.dataSource = {
       "chart": this.chartSetup,

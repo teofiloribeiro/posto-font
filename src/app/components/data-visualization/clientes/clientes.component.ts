@@ -30,7 +30,7 @@ export class ClientesComponent implements OnInit {
   clientesByCityState:string;
   clientsByCityCity: string;
 
-  //Get ch  art data
+  //Get chart data
   clientesByState$: Observable <ChartData[]>;
   clientesByCity$: Observable <ChartData[]>;
   clientesByCountry$: Observable <ChartData[]>;
@@ -38,7 +38,6 @@ export class ClientesComponent implements OnInit {
 
   constructor(private chartdataService: ChartDataService) { 
     this.states = chartdataService.getStates();
-    this.cities = chartdataService.getCities();
   }
 
   ngOnInit() {
@@ -47,7 +46,7 @@ export class ClientesComponent implements OnInit {
       numberSuffix: "K",
       xAxisName: "Estados",
       yAxisName: "Clientes",
-      theme: "ocean",
+      theme: "fusion",
       subCaption: ""
     }
 
@@ -56,7 +55,7 @@ export class ClientesComponent implements OnInit {
       numberSuffix: "K",
       xAxisName: "Tipos de Veiculos",
       yAxisName: "Veiculos",
-      theme: "ocean",
+      theme: "fusion",
       subCaption: ""
     }
 
@@ -65,13 +64,19 @@ export class ClientesComponent implements OnInit {
 
 
   }
+  onStateSelected(value: string){
+    console.log(value);
+    this.cities = this.chartdataService.getCities(value);
+  }
+
+
   onSubmitByState(){
     this.clientesByStateChart = {
       caption: "Clientes Por Estado",
       numberSuffix: "K",
       xAxisName: "Cidades",
       yAxisName: "Clientes",
-      theme: "ocean",
+      theme: "fusion",
       subCaption: ""
     }
     console.log(this.clientesByStateChart)
@@ -84,7 +89,7 @@ export class ClientesComponent implements OnInit {
       numberSuffix: "K",
       xAxisName: "Bairros",
       yAxisName: "Clientes",
-      theme: "ocean",
+      theme: "fusion",
       subCaption: ""
     }
     console.log(this.clientesByCityState+ " "+this.clientsByCityCity)

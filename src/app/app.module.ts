@@ -31,6 +31,8 @@ import { FuelComponent } from './components/data-visualization/fuel/fuel.compone
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { Line2dComponent } from './components/data-visualization/line2d/line2d.component';
 import { MultLine2dComponent } from './components/data-visualization/mult-line2d/mult-line2d.component';
+import { AdminComponent } from './components/data-visualization/admin/admin.component';
+import { MultColumnComponent } from './components/data-visualization/mult-column/mult-column.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -45,7 +47,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     FuelComponent,
     HomePageComponent,
     Line2dComponent,
-    MultLine2dComponent
+    MultLine2dComponent,
+    AdminComponent,
+    MultColumnComponent
   ],
   imports: [
     BrowserModule,

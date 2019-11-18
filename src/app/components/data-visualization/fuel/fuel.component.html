@@ -1,17 +1,18 @@
 <div class="dashboard-container">
     <div class="row">
-        <div id="fuelAvg" class="col-6">
+        <!-- <div id="fuelAvg" class="col-12">
             <div class="field-border">
                 <div class="filter"></div>
                 <div *ngIf="veiclesTypes$ | async as veiclesTypes; else loading">
                     <app-line2d [chartData]="veiclesTypes" [chartSetup]="chartSetup"></app-line2d>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div id="fuelAvg" class="col-6">
+        <div id="fuelAvg" class="col-12">
             <div class="field-border">
                 <div class="filter">
+                    <p>Valor Médio do Combustivel Por Mês</p>
                     <mat-form-field class="mr-2">
                         <input matInput [matDatepicker]="begin" placeholder="Choose a date" [formControl]="initialDate">
                         <mat-datepicker-toggle matSuffix [for]="begin"></mat-datepicker-toggle>
@@ -33,23 +34,26 @@
         </div>
     </div>
     <div class="row">
-        <div id="violine" class="col-6">
+        <div id="violine" class="col-12">
             <div class="field-border">
                 <div class="filter">
+                    <p>Distribuição de Combustivel</p>
                     <mat-form-field class="mr-2">
-                        <input matInput [matDatepicker]="beginVioline" placeholder="Choose a date" [formControl]="initialDateVioline">
+                        <input matInput [matDatepicker]="beginVioline" placeholder="Choose a date"
+                            [formControl]="initialDateVioline">
                         <mat-datepicker-toggle matSuffix [for]="beginVioline"></mat-datepicker-toggle>
                         <mat-datepicker #beginVioline></mat-datepicker>
                     </mat-form-field>
                     <mat-form-field class="mr-2">
-                        <input matInput [matDatepicker]="endVioline" placeholder="Choose a date" [formControl]="lastDateVioline">
+                        <input matInput [matDatepicker]="endVioline" placeholder="Choose a date"
+                            [formControl]="lastDateVioline">
                         <mat-datepicker-toggle matSuffix [for]="endVioline"></mat-datepicker-toggle>
                         <mat-datepicker #endVioline></mat-datepicker>
                     </mat-form-field>
                     <button type="button" class="btn btn-light" (click)="onVioline()">Ok</button>
                 </div>
                 <div *ngIf="violines$ | async as violine; else loading">
-                   {{violine.data}}
+                    <img [src]="violine.imagemBase64">
                 </div>
 
             </div>
