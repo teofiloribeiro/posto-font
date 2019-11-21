@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API: "http://localhost:9090/",
-  PYAPI: "http://localhost:5000/"
+  PYAPI: "http://localhost:5000"
 };
 
 /*

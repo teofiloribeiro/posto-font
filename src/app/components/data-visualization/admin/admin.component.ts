@@ -72,19 +72,19 @@ export class AdminComponent implements OnInit {
   }
   onSeasonalityPerWeek(){
     let from = new Date(this.seasonalityPerWeekInitialDate.value);
-    let to = new Date(this.seasonalityPerWeekInitialDate.value);
+    let to = new Date(this.seasonalityPerWeekFinalDate.value);
 
     this.seasonalityPerWeek$ = this.pyChartsService.getSeasonalityPerWeek(from,to);  
   }
   onSeasonalityPerMonth(){
     let from = new Date(this.seasonalityPerMonthInitialDate.value);
-    let to = new Date(this.seasonalityPerMonthInitialDate.value);
+    let to = new Date(this.seasonalityPerMonthFinalDate.value);
 
     this.seasonalityPerWeek$ = this.pyChartsService.getSeasonalityPerMonth(from,to);  
   }
   onSeasonalityPerYear(){
     let from = new Date(this.seasonalityPerYearInitialDate.value);
-    let to = new Date(this.seasonalityPerYearInitialDate.value);
+    let to = new Date(this.seasonalityPerYearFinalDate.value);
 
     this.seasonalityPerWeek$ = this.pyChartsService.getSeasonalityPerYear(from,to);  
   }
