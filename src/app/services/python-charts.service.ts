@@ -64,7 +64,7 @@ export class PythonChartsService {
       )
   }
   getSeasonalityPerYear(from: Date, to: Date) {
-    return this.http.get<any>(`${this.API}${this.seasonalityPerYear}?data_inicial=${from.toISOString()}&data_final=${to.toISOString()}`)
+    return this.http.get<PythonType>(`${this.API}${this.seasonalityPerYear}?data_inicial=${from.toISOString()}&data_final=${to.toISOString()}`)
       .pipe(
         tap(
           console.log

@@ -35,7 +35,7 @@ export class AdminComponent implements OnInit {
   topAndLosersData$: Observable<PythonType>;
   seasonalityPerWeek$: Observable<PythonType>
   seasonalityPerMonth$: Observable<PythonType>
-  seasonalityPerYear$: Observable<any>
+  seasonalityPerYear$: Observable<PythonType>
 
   categories: any[];
 
