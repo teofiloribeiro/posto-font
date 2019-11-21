@@ -42,7 +42,7 @@
                 <button type="button" class="btn btn-light" (click)="onSeasonalityPerWeek()">Ok</button>
             </div>
             <div *ngIf="seasonalityPerWeek$ | async as seasonalityPerWeek; else loading">
-                <img [src]="seasonalityPerWeek.imagemBase64">
+                <img [src]="seasonalityPerWeek.imagemBase64"/>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
                 <button type="button" class="btn btn-light" (click)="onSeasonalityPerMonth()">Ok</button>
             </div>
             <div *ngIf="seasonalityPerMonth$ | async as seasonalityPerMonth; else loading">
-                <img [src]="seasonalityPerMonth.imagemBase64">
+                <img [src]="seasonalityPerMonth.imagemBase64"/>
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@
                 <button type="button" class="btn btn-light" (click)="onSeasonalityPerYear()">Ok</button>
             </div>
             <div *ngIf="seasonalityPerYear$ | async as seasonalityPerYear; else loading">
-                <img [src]="seasonalityPerYear.imagemBase64">
+                <img [src]="seasonalityPerYear.imagemBase64"/>
             </div>
         </div>
     </div>
@@ -118,7 +118,7 @@
                 <button type="button" class="btn btn-light" (click)="onTopAndLoserStations()">Ok</button>
             </div>
             <div *ngIf="topAndLosersData$ | async as topAndLosersData; else loading">
-                <img [src]="topAndLosersData.imagemBase64">
+                <img [src]="topAndLosersData.imagemBase64"/>
             </div>
         </div>
     </div>
