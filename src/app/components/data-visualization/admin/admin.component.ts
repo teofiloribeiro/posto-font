@@ -5,11 +5,7 @@ import { MultiLineDataset } from 'src/app/interfaces/multi-line-dataset';
 import { MultiLineChartSetup } from 'src/app/interfaces/multi-line-chart-setup';
 import { Observable } from 'rxjs';
 import { PythonChartsService } from 'src/app/services/python-charts.service';
-
-export interface PythonType {
-  tituloGrafico: string;
-  imagemBase64: string;
-}
+import { PythonType } from 'src/app/interfaces/python-type';
 
 
 @Component({
@@ -38,8 +34,8 @@ export class AdminComponent implements OnInit {
   fuelPriceData$: Observable<any[]>;
   topAndLosersData$: Observable<PythonType>;
   seasonalityPerWeek$: Observable<PythonType>
-  seasonalityPeMonth$: Observable<PythonType>
-  seasonalityPerYear$: Observable<PythonType>
+  seasonalityPerMonth$: Observable<PythonType>
+  seasonalityPerYear$: Observable<any>
 
   categories: any[];
 
@@ -80,13 +76,13 @@ export class AdminComponent implements OnInit {
     let from = new Date(this.seasonalityPerMonthInitialDate.value);
     let to = new Date(this.seasonalityPerMonthFinalDate.value);
 
-    this.seasonalityPerWeek$ = this.pyChartsService.getSeasonalityPerMonth(from,to);  
+    this.seasonalityPerMonth$ = this.pyChartsService.getSeasonalityPerMonth(from,to);  
   }
   onSeasonalityPerYear(){
     let from = new Date(this.seasonalityPerYearInitialDate.value);
     let to = new Date(this.seasonalityPerYearFinalDate.value);
 
-    this.seasonalityPerWeek$ = this.pyChartsService.getSeasonalityPerYear(from,to);  
+    this.seasonalityPerYear$ = this.pyChartsService.getSeasonalityPerYear(from,to);  
   }
 
 }

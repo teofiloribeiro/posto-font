@@ -5,11 +5,8 @@ import { ChartData } from '../interfaces/chart-data';
 
 import { HttpClient } from '@angular/common/http';
 import { delay, tap, take } from 'rxjs/operators';
+import { PythonType } from '../interfaces/python-type';
 
-export interface PythonType {
-  tituloGrafico: string;
-  imagemBase64: string;
-}
 @Injectable({
   providedIn: 'root'
 })
@@ -67,7 +64,7 @@ export class PythonChartsService {
       )
   }
   getSeasonalityPerYear(from: Date, to: Date) {
-    return this.http.get<PythonType>(`${this.API}${this.seasonalityPerYear}?data_inicial=${from.toISOString()}&data_final=${to.toISOString()}`)
+    return this.http.get<any>(`${this.API}${this.seasonalityPerYear}?data_inicial=${from.toISOString()}&data_final=${to.toISOString()}`)
       .pipe(
         tap(
           console.log

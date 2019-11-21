@@ -6,12 +6,9 @@ import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { MultiLineDataset } from 'src/app/interfaces/multi-line-dataset';
 import { PythonChartsService } from 'src/app/services/python-charts.service';
+import { PythonType } from 'src/app/interfaces/python-type';
 export interface FuelValue {
   value: string;
-}
-export interface PythonType {
-  tituloGrafico: string;
-  imagemBase64: string;
 }
 @Component({
   selector: 'app-fuel',
