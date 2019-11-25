@@ -13,7 +13,7 @@ import { PythonType } from '../interfaces/python-type';
 
 export class PythonChartsService {
   private readonly API = environment.PYAPI;
-  private readonly veiclesFuels = "/violino/vendas_veiculo_combustivel";
+  private readonly veiclesFuels = "/vendas/violino/total_venda_por_tipo";
   private readonly topAndLosers= "";
   private readonly salesPerMonth="";
   private readonly seasonalityPerWeek="/vendas/sazonalidade/semanal";

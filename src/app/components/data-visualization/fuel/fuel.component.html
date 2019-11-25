@@ -53,7 +53,7 @@
                     <button type="button" class="btn btn-light" (click)="onVioline()">Ok</button>
                 </div>
                 <div *ngIf="violines$ | async as violine; else loading">
-                    <img [src]="violine.imagemBase64" />
+                    <img [src]="violine.imageBase64" />
                 </div>
 
             </div>
@@ -61,7 +61,7 @@
 
     </div>
     <ng-template #loading>
-        <span>LOADING...</span>
+        <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     </ng-template>
 
 </div>
