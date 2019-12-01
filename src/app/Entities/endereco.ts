@@ -1,4 +1,4 @@
-import { Coordendas } from './coordenadas';
+import { Coordenadas } from './coordenadas';
 import { Bairro } from './bairro';
 
 export class Endereco{
@@ -7,6 +7,11 @@ export class Endereco{
     cep:String;
     numero:String;
     complemento:String;
-    coordenadas: Coordendas;
+    coordenadas: Coordenadas;
     bairro: Bairro;
+
+    constructor(){
+        this.coordenadas = new Coordenadas();
+        this.bairro = new Bairro();
+    }
 }

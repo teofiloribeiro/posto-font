@@ -1,5 +1,138 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-      
-   
+
+    <div class="form-container">
+        <div [hidden]="clienteEscolhido != undefined">
+            <label for="tipoCliente">Selecione o tipo de cliente desejado:</label>
+            <br>
+            <mat-radio-group class="tp-radio-group" id="tipoCliente" name="tipoCliente" [(ngModel)]="clienteEscolhido" (change)="onClienteEscolhido()">
+                <mat-radio-button class="tp-radio-button" (change)="onClienteEscolhido()"
+                    *ngFor="let tipoCliente of tiposCliente" [value]="tipoCliente">
+                    {{tipoCliente}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+
+    <div class="form-container" [hidden]="clienteEscolhido == undefined || clienteEscolhido != 'Pessoa Física'">
+
+        <h5>Dados Pessoais</h5>
+
+        <div class="row">
+            <mat-form-field class="md-form col-3">
+                <input matInput type="text" id="nomePessoa" class="form-control" name="nomePessoa" placeholder="Nome"
+                    [ngModel]="pessoa?.nome" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-6">
+                <input matInput type="text" id="sobrenome" class="form-control" name="sobrenome" placeholder="Sobrenome"
+                    [ngModel]="pessoa?.sobrenome" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-3">
+                <input matInput type="text" id="identidade" class="form-control" name="identidade"
+                    placeholder="Identidade" [ngModel]="pessoa?.identidade" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-2">
+                <input matInput type="text" id="orgaoEmissor" class="form-control" name="orgaoEmissor"
+                    placeholder="Órgão Emissor" [ngModel]="pessoa?.orgaoEmissor" />
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="form-container" [hidden]="clienteEscolhido == undefined || clienteEscolhido != 'Pessoa Jurídica'">
+
+        <h5>Dados da Empresa</h5>
+
+        <div class="row">
+            <mat-form-field class="md-form col-6">
+                <input matInput type="text" id="nomeFantasia" class="form-control" name="nomeFantasia"
+                    placeholder="Nome Fantasia" [ngModel]="pessoa?.nomeFantasia" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-6">
+                <input matInput type="text" id="razaoSocial" class="form-control" name="razaoSocial"
+                    placeholder="Razão Social" [ngModel]="pessoa?.razaoSocial" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-3">
+                <input matInput type="text" id="cnpj" class="form-control" name="cnpj" placeholder="CNPJ"
+                    [ngModel]="pessoa?.cnpj" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-3">
+                <input matInput type="text" id="inscricaoEstadual" class="form-control" name="inscricaoEstadual"
+                    placeholder="Inscrição Estadual" [ngModel]="pessoa?.inscricaoEstadual" />
+            </mat-form-field>
+
+        </div>
+    </div>
+
+
+    <div class="form-container" [hidden]="clienteEscolhido == undefined">
+
+        <h5>Endereço</h5>
+
+        <div class="row">
+
+            <mat-form-field class="md-form col">
+                <input matInput type="text" id="cep" class="form-control" name="cep" placeholder="CEP"
+                    [ngModel]="endereco.cep" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-4">
+                <input matInput type="text" id="rua" class="form-control" name="rua" placeholder="Rua"
+                    [ngModel]="endereco.rua" />
+            </mat-form-field>
+
+            <mat-form-field class="col">
+                <input matInput type="text" id="numero" class="form-control" name="numero" placeholder="Numero"
+                    [ngModel]="endereco.numero" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-2">
+                <mat-select [(value)]="estadoEscolhido" class="form-control" placeholder="Estado">
+                    <mat-option *ngFor="let estado of estados" [value]="estado" (click)="listarCidades()">
+                        {{estado.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-2">
+                <mat-select [(value)]="cidadeEscolhida" class="form-control" placeholder="Cidade">
+                    <mat-option *ngFor="let cidade of cidades" [value]="cidade" (click)="listarBairros()">
+                        {{cidade.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-2">
+                <mat-select [(value)]="endereco.bairro" class="form-control" placeholder="Bairro">
+                    <mat-option *ngFor="let bairro of bairros" [value]="bairro">
+                        {{bairro.nome}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="md-form col">
+                <input matInput type="text" id="latitude" class="form-control" name="latitude" placeholder="Latitude"
+                    [ngModel]="endereco.coordenadas.latitude" />
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field class="md-form col">
+                <input matInput type="text" id="longitude" class="form-control" name="longitude" placeholder="Longitude"
+                    [ngModel]="endereco.coordenadas.longitude" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col">
+                <input matInput type="text" id="telefone" class="form-control" name="telefone" placeholder="Telefone"
+                    [ngModel]="telefone.numero" />
+            </mat-form-field>
+        </div>
+
+        <button type="submit" class="btn btn-light col-1 align-self-end">Criar</button>
+    </div>
 
 </form>

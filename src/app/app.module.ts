@@ -8,7 +8,10 @@ import {
   MatButtonModule,
   MatNativeDateModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatOptionModule,
+  MatIconModule,
+  MatRadioModule
 } from "@angular/material";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -65,6 +68,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     MatNativeDateModule,
     MatInputModule,
     MatSelectModule,
+    MatOptionModule,
+    MatIconModule,
+    MatRadioModule,
     ReactiveFormsModule,
     FusionChartsModule,
     HttpClientModule,
