@@ -6,4 +6,8 @@ export class Veiculo{
     modelo: String;
     cor: String;
     tipoVeiculo: TipoVeiculo;
+
+    constructor (){
+        this.tipoVeiculo = new TipoVeiculo();
+    }
 }

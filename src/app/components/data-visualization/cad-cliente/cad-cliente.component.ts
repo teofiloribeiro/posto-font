@@ -10,6 +10,9 @@ import { PessoaJuridica } from 'src/app/Entities/pessoa-juridica';
 import { Estado } from 'src/app/Entities/estado';
 import { Cidade } from 'src/app/Entities/cidade';
 import { Bairro } from 'src/app/Entities/bairro';
+import { Observable } from 'rxjs';
+import { Veiculo } from 'src/app/Entities/veiculo';
+import { TipoVeiculo } from 'src/app/Entities/tipo-veiculo';
 
 export interface SelectType {
   value: string;
@@ -26,6 +29,8 @@ export class CadClienteComponent  implements OnInit {
   pessoa: any;
   endereco: Endereco;
   telefone: Telefone;
+  veiculo: Veiculo;
+  tiposVeiculo: TipoVeiculo[];
 
   estados: Estado[];
   estadoEscolhido: Estado;
@@ -45,12 +50,11 @@ export class CadClienteComponent  implements OnInit {
   ngOnInit() {
     this.endereco = new Endereco();
     this.telefone = new Telefone();
+    this.veiculo = new Veiculo();
     this.cadCliService.getListaEstados().subscribe(response =>{
-      this.estados = response;
-      this.estados.forEach(estado=>{
-        console.log(estado.nome);
-      });
+     this.estadosConstructor(response);
     });
+
     this.tiposTelefone = Object.keys(EnumTipoTelefone);
   }
 
@@ -71,14 +75,47 @@ export class CadClienteComponent  implements OnInit {
 
   listarCidades(){
     this.cadCliService.getListaCidades(this.estadoEscolhido.cod).subscribe(response=>{
-      this.cidades = response.value;
+      this.cidadesConstructor(response);
     });
   }
 
   listarBairros(){
     this.cadCliService.getListaBairros(this.cidadeEscolhida.cod).subscribe(response=>{
-      this.bairros = response;
+      this.bairrosConstructor(response);
     });
+  }
+
+  estadosConstructor(resposta: Observable<any>[]){
+    this.estados = [];
+    resposta.forEach(e=>{
+      const estado = new Estado();
+      estado.cod = e[0];
+      estado.sigla = e[1];
+      estado.nome = e[2];
+      this.estados.push(estado);
+    })
+  }
+
+  cidadesConstructor(resposta: Observable<any>[]){
+    this.cidades = [];
+    resposta.forEach(c=>{
+      const cidade = new Cidade();
+      cidade.cod = c[0];
+      cidade.nome = c[1];
+      cidade.estado = this.estadoEscolhido;
+      this.cidades.push(cidade);
+    })
+  }
+
+  bairrosConstructor(resposta: Observable<any>[]){
+    this.bairros = [];
+    resposta.forEach(b=>{
+      const bairro = new Bairro();
+      bairro.cod = b[0];
+      bairro.nome = b[1];
+      bairro.cidade = this.cidadeEscolhida;
+      this.bairros.push(bairro);
+    })
   }
 
 }

@@ -1,10 +1,11 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate style="padding-top: 3em; padding-bottom: 5em;">
 
     <div class="form-container">
         <div [hidden]="clienteEscolhido != undefined">
             <label for="tipoCliente">Selecione o tipo de cliente desejado:</label>
             <br>
-            <mat-radio-group class="tp-radio-group" id="tipoCliente" name="tipoCliente" [(ngModel)]="clienteEscolhido" (change)="onClienteEscolhido()">
+            <mat-radio-group class="tp-radio-group" id="tipoCliente" name="tipoCliente" [(ngModel)]="clienteEscolhido"
+                (change)="onClienteEscolhido()">
                 <mat-radio-button class="tp-radio-button" (change)="onClienteEscolhido()"
                     *ngFor="let tipoCliente of tiposCliente" [value]="tipoCliente">
                     {{tipoCliente}}
@@ -132,6 +133,37 @@
             </mat-form-field>
         </div>
 
+        <h5>Dados do Veículo</h5>
+
+        <div class="row">
+            <mat-form-field class="md-form col">
+                <input matInput type="text" id="placa" class="form-control" name="placa" placeholder="Placa"
+                    [ngModel]="veiculo.placa" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col">
+                <input matInput type="text" id="marca" class="form-control" name="marca" placeholder="Marca"
+                    [ngModel]="veiculo.marca" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col">
+                <input matInput type="text" id="modelo" class="form-control" name="modelo" placeholder="Modelo"
+                    [ngModel]="veiculo.modelo" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col">
+                <input matInput type="text" id="cor" class="form-control" name="cor" placeholder="Cor"
+                    [ngModel]="veiculo.cor" />
+            </mat-form-field>
+
+            <mat-form-field class="md-form col-2">
+                <mat-select [(value)]="veiculo.tipoVeiculo" class="form-control" placeholder="Tipo do Veículo">
+                    <mat-option *ngFor="let tipo of tiposVeiculo" [value]="tipo">
+                        {{tipo.desricao}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
         <button type="submit" class="btn btn-light col-1 align-self-end">Criar</button>
     </div>
 
