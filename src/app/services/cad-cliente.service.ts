@@ -7,6 +7,7 @@ import { Estado } from '../Entities/estado';
 import { Cidade } from '../Entities/cidade';
 import { Bairro } from '../Entities/bairro';
 import { TipoVeiculo } from '../Entities/tipo-veiculo';
+import { DataMining } from '../Entities/dataMining';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,20 @@ export class CadClienteService {
   private readonly listarCidades = "/cidades";
   private readonly listarBairros = "/bairros";
   private readonly listarTiposVeiculo = "/tipo_veiculo";
+  private readonly IP_DE_PAULO="http://192.168.43.151:5000/"
+  private readonly DATA_MINING="/machine_learning/qualifica_cliente/"
 
-  createClient(client: Cliente){
-    return this.http.post(`${this.API}${this.createCliente}`, client)
+  dataMining(data: DataMining){
+    return this.http.post(`${this.IP_DE_PAULO}${this.DATA_MINING}`, data)
+      .pipe(
+        tap(
+          console.log
+        )
+      );
+  }
+
+  createClient(pessoa: any){
+    return this.http.post(`${this.API}${this.createCliente}`, pessoa)
       .pipe(
         tap(
           console.log

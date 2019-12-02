@@ -3,7 +3,7 @@ import { TipoVeiculo } from './tipo-veiculo';
 export class Veiculo{
     placa: String;
     marca: String;
-    modelo: String;
+    modelo: string;
     cor: String;
     tipoVeiculo: TipoVeiculo;
 

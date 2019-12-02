@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="form-container" [hidden]="clienteEscolhido == undefined || clienteEscolhido != 'Pessoa Física'">
+    <div class="form-container" [hidden]="clienteEscolhido == undefined || clienteEscolhido != 'PF'">
 
         <h5>Dados Pessoais</h5>
 
@@ -38,10 +38,20 @@
                 <input matInput type="text" id="orgaoEmissor" class="form-control" name="orgaoEmissor"
                     placeholder="Órgão Emissor" [ngModel]="pessoa?.orgaoEmissor" />
             </mat-form-field>
+
+            <label for="tipoCliente">Sexo:</label>
+            <br>
+            <mat-radio-group class="tp-radio-group" id="sexo" name="sexo" [(ngModel)]="dataMining.sexo">
+                <mat-radio-button class="tp-radio-button"
+                    *ngFor="let sexo of sexos" [value]="sexo">
+                    {{sexo}}
+                </mat-radio-button>
+            </mat-radio-group>
+
         </div>
     </div>
 
-    <div class="form-container" [hidden]="clienteEscolhido == undefined || clienteEscolhido != 'Pessoa Jurídica'">
+    <div class="form-container" [hidden]="clienteEscolhido == undefined || clienteEscolhido != 'PJ'">
 
         <h5>Dados da Empresa</h5>
 
@@ -148,7 +158,7 @@
 
             <mat-form-field class="md-form col">
                 <input matInput type="text" id="modelo" class="form-control" name="modelo" placeholder="Modelo"
-                    [ngModel]="veiculo.modelo" />
+                    [(ngModel)]="veiculo.modelo" />
             </mat-form-field>
 
             <mat-form-field class="md-form col">

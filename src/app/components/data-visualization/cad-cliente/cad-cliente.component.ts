@@ -13,6 +13,7 @@ import { Bairro } from 'src/app/Entities/bairro';
 import { Observable } from 'rxjs';
 import { Veiculo } from 'src/app/Entities/veiculo';
 import { TipoVeiculo } from 'src/app/Entities/tipo-veiculo';
+import { DataMining } from 'src/app/Entities/dataMining';
 
 export interface SelectType {
   value: string;
@@ -25,6 +26,8 @@ export interface SelectType {
   styleUrls: ['./cad-cliente.component.scss']
 })
 export class CadClienteComponent  implements OnInit {
+
+  dataMining:DataMining;
 
   pessoa: any;
   endereco: Endereco;
@@ -39,8 +42,10 @@ export class CadClienteComponent  implements OnInit {
   bairros: Bairro[];
 
   tiposTelefone: string[];
-  tiposCliente: string[] = ["Pessoa Física", "Pessoa Jurídica"];
+  tiposCliente: string[] = ["PF", "PJ"];
   clienteEscolhido: string;
+
+  sexos: string[] = ["M", "F"];
   
 
   constructor(private cadCliService: CadClienteService) {
@@ -48,6 +53,7 @@ export class CadClienteComponent  implements OnInit {
   }
 
   ngOnInit() {
+    this.dataMining = new DataMining();
     this.endereco = new Endereco();
     this.telefone = new Telefone();
     this.veiculo = new Veiculo();
@@ -59,22 +65,30 @@ export class CadClienteComponent  implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    this.pessoa.enderecos.push(this.endereco);
-    this.pessoa.telefones.push(this.telefone);
-    this.cadCliService.createClient(this.pessoa).subscribe();
+    this.dataMining.estado = this.estadoEscolhido;
+    this.dataMining.cidade = this.cidadeEscolhida;
+    this.dataMining.bairro = this.endereco.bairro;
+    this.dataMining.modelo = this.veiculo.modelo;
+    this.cadCliService.dataMining(this.dataMining).subscribe();
+    // this.pessoa.enderecos.push(this.endereco);
+    // this.pessoa.telefones.push(this.telefone);
+    // this.cadCliService.createClient(this.pessoa).subscribe();
   }
 
   onClienteEscolhido(){
     switch(this.clienteEscolhido){
-      case "Pessoa Física":
+      case "PF":
         this.pessoa = new PessoaFisica();
-      case "Pessoa Jurídica":
+      case "PJ":
         this.pessoa = new PessoaJuridica();
+        this.dataMining.sexo = 'I';
     }
+    this.dataMining.tipoPessoa = this.clienteEscolhido;
   }
 
   listarCidades(){
     this.cadCliService.getListaCidades(this.estadoEscolhido.cod).subscribe(response=>{
+      //this.cidades=response;
       this.cidadesConstructor(response);
     });
   }
