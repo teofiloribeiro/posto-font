@@ -8,13 +8,16 @@ import {
   MatButtonModule,
   MatNativeDateModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatOptionModule,
+  MatIconModule,
+  MatRadioModule
 } from "@angular/material";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataVisualizationComponent } from './components/data-visualization/data-visualization.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // Import angular-fusioncharts
 import { FusionChartsModule } from "angular-fusioncharts";
@@ -33,6 +36,7 @@ import { Line2dComponent } from './components/data-visualization/line2d/line2d.c
 import { MultLine2dComponent } from './components/data-visualization/mult-line2d/mult-line2d.component';
 import { AdminComponent } from './components/data-visualization/admin/admin.component';
 import { MultColumnComponent } from './components/data-visualization/mult-column/mult-column.component';
+import { CadClienteComponent } from './components/data-visualization/cad-cliente/cad-cliente.component';
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -49,7 +53,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     Line2dComponent,
     MultLine2dComponent,
     AdminComponent,
-    MultColumnComponent
+    MultColumnComponent,
+    CadClienteComponent
   ],
   imports: [
     BrowserModule,
@@ -63,10 +68,13 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
     MatNativeDateModule,
     MatInputModule,
     MatSelectModule,
+    MatOptionModule,
+    MatIconModule,
+    MatRadioModule,
     ReactiveFormsModule,
     FusionChartsModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,13 +5,15 @@ import { FuelComponent } from './components/data-visualization/fuel/fuel.compone
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { DataVisualizationComponent } from './components/data-visualization/data-visualization.component';
 import { AdminComponent } from './components/data-visualization/admin/admin.component';
+import { CadClienteComponent } from './components/data-visualization/cad-cliente/cad-cliente.component';
 
 
 const routes: Routes = [
   {path: '', component: HomePageComponent },
   {path: 'clientes', component: ClientesComponent },
   {path: 'fuel', component: FuelComponent },
-  {path: 'admin', component: AdminComponent }
+  {path: 'admin', component: AdminComponent },
+  {path: 'cadcliente', component: CadClienteComponent}
 ];
 
 @NgModule({
